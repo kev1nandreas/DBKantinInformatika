@@ -57,9 +57,9 @@ INSERT INTO kedai (ked_id, ked_nama) VALUES
   ('K03', 'Kantin Mungil Informatika');
 --DATA KARYAWAN
 INSERT INTO KARYAWAN (K_NIK,K_NAMA,K_JENIS_KELAMIN,K_EMAIL,K_UMUR,K_NO_TELP, KEDAI_KED_ID) VALUES
-('1264683115471700', 'Carol Williams', 'L', 'jamescarter@example.org', 29, '082542333815', 'K02'),
-('4246321716258604', 'Sara Rogers', 'P', 'christianhoward@example.net', 35, '082658104522', 'K03'),
-('6057077645410277', 'Anthony Murphy', 'P', 'reedcaleb@example.net', 23, '082564889565', 'K01'),
-('2508714836124945', 'Janet Kirk', 'P', 'tscott@example.org', 25, '082601792606', 'K01'),
-('9298557228857178', 'Jennifer Buchanan', 'L', 'kramerjeanette@example.org', 40, '082705139266', 'K02'),
-('9892486148938912', 'Patricia Martinez', 'P', 'gpearson@example.net', 37, '082495875645', 'K03');
+('1264683115471700', 'Carol Williams', 'L', 'wcarol@example.org', 29, '082542333815', 'K02'),
+('4246321716258604', 'Sara Rogers', 'P', 'rsara@example.net', 35, '082658104522', 'K03'),
+('6057077645410277', 'Anthony Murphy', 'P', 'manthony@example.net', 23, '082564889565', 'K01'),
+('2508714836124945', 'Janet Kirk', 'P', 'kjanet@example.org', 25, '082601792606', 'K01'),
+('9298557228857178', 'Jennifer Buchanan', 'L', 'bjennifer@example.org', 40, '082705139266', 'K02'),
+('9892486148938912', 'Patricia Martinez', 'P', 'mpatricia@example.net', 37, '082495875645', 'K03');
