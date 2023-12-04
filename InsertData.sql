@@ -55,7 +55,6 @@ INSERT INTO kedai (ked_id, ked_nama) VALUES
   ('K01', 'Warung Bu Sol'),
   ('K02', 'Kedai Mak Nanun'),
   ('K03', 'Kantin Mungil Informatika');
-<<<<<<< HEAD
 
 INSERT INTO menu (mn_id, mn_nama, mn_harga, mn_jenis, kedai_ked_id) VALUES 
   ('C01', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
@@ -65,8 +64,7 @@ INSERT INTO menu (mn_id, mn_nama, mn_harga, mn_jenis, kedai_ked_id) VALUES
   ('C05', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
   ('C06', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
   ('C07', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
-  
-=======
+
 --DATA KARYAWAN
 INSERT INTO KARYAWAN (K_NIK,K_NAMA,K_JENIS_KELAMIN,K_EMAIL,K_UMUR,K_NO_TELP, KEDAI_KED_ID) VALUES
 ('1264683115471700', 'Carol Williams', 'L', 'wcarol@example.org', 29, '082542333815', 'K02'),
@@ -75,4 +73,4 @@ INSERT INTO KARYAWAN (K_NIK,K_NAMA,K_JENIS_KELAMIN,K_EMAIL,K_UMUR,K_NO_TELP, KED
 ('2508714836124945', 'Janet Kirk', 'P', 'kjanet@example.org', 25, '082601792606', 'K01'),
 ('9298557228857178', 'Jennifer Buchanan', 'L', 'bjennifer@example.org', 40, '082705139266', 'K02'),
 ('9892486148938912', 'Patricia Martinez', 'P', 'mpatricia@example.net', 37, '082495875645', 'K03');
->>>>>>> d7421a2100d72c2582e6a7b48d4be807c9cd276e
+
