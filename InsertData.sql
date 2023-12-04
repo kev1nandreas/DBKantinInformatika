@@ -50,3 +50,8 @@ INSERT INTO customer (c_nrp, c_nama) VALUES
   ('5025245152', 'Douglas Mitchell'),
   ('5025248167', 'Lauren Mcdonald'),
   ('5025264138', 'Jill Mora');
+
+INSERT INTO kedai (ked_id, ked_nama) VALUES
+  ('K01', 'Warung Bu Sol'),
+  ('K02', 'Kedai Mak Nanun'),
+  ('K03', 'Kantin Mungil Informatika');
