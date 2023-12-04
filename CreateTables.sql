@@ -31,7 +31,7 @@ CREATE TABLE kedai (
 CREATE TABLE meja (
     me_id char(2)  NOT NULL,
     me_customer_datang timestamp  NOT NULL,
-    me_customer_pergi timestamp  NOT NULL,
+    me_customer_pergi timestamp,
     CONSTRAINT meja_pk PRIMARY KEY (me_id)
 );
 
