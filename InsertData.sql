@@ -55,3 +55,13 @@ INSERT INTO kedai (ked_id, ked_nama) VALUES
   ('K01', 'Warung Bu Sol'),
   ('K02', 'Kedai Mak Nanun'),
   ('K03', 'Kantin Mungil Informatika');
+
+INSERT INTO menu (mn_id, mn_nama, mn_harga, mn_jenis, kedai_ked_id) VALUES 
+  ('C01', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
+  ('C02', 'Mie Pangsit Ayam Bakso', 16000, 'Makanan', 'Kedai Mak Nanun'),
+  ('C03', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
+  ('C04', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
+  ('C05', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
+  ('C06', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
+  ('C07', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
+  
