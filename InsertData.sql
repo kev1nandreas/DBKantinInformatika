@@ -50,12 +50,14 @@ INSERT INTO customer (c_nrp, c_nama) VALUES
   ('5025245152', 'Douglas Mitchell'),
   ('5025248167', 'Lauren Mcdonald'),
   ('5025264138', 'Jill Mora');
+
 --DATA KEDAI
 INSERT INTO kedai (ked_id, ked_nama) VALUES
   ('K01', 'Warung Bu Sol'),
   ('K02', 'Kedai Mak Nanun'),
   ('K03', 'Kantin Mungil Informatika');
 
+--DATA MENU
 INSERT INTO menu (mn_id, mn_nama, mn_harga, mn_jenis, kedai_ked_id) VALUES 
   ('C01', 'Mie Pangsit Ayam', 14000, 'Makanan', 'Kedai Mak Nanun'),
   ('C02', 'Mie Pangsit Ayam Bakso', 16000, 'Makanan', 'Kedai Mak Nanun'),
