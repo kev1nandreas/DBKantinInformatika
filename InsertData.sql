@@ -50,3 +50,5 @@ INSERT INTO customer (c_nrp, c_nama) VALUES
   ('5025245152', 'Douglas Mitchell'),
   ('5025248167', 'Lauren Mcdonald'),
   ('5025264138', 'Jill Mora');
+
+-- tambah data
