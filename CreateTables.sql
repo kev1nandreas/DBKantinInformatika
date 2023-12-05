@@ -1,11 +1,21 @@
+-- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2023-12-05 07:53:00.612
+
 -- tables
 -- Table: customer
-CREATE DATABASE kantin_informatika;
-
 CREATE TABLE customer (
     c_nrp char(10)  NOT NULL,
     c_nama varchar(250)  NOT NULL,
     CONSTRAINT customer_pk PRIMARY KEY (c_nrp)
+);
+
+-- Table: detail_penggunaan_meja
+CREATE TABLE detail_penggunaan_meja (
+    dp_id char(3)  NOT NULL,
+    dp_customer_datang timestamp  NULL,
+    dp_customer_pergi timestamp  NULL,
+    meja_me_id char(2)  NOT NULL,
+    CONSTRAINT detail_penggunaan_meja_pk PRIMARY KEY (dp_id)
 );
 
 -- Table: karyawan
@@ -16,7 +26,7 @@ CREATE TABLE karyawan (
     k_email varchar(50)  NOT NULL,
     k_umur int  NOT NULL,
     k_no_telp varchar(13)  NOT NULL,
-    kedai_ked_id char(10)  NOT NULL,
+    kedai_ked_id char(3)  NOT NULL,
     CONSTRAINT karyawan_pk PRIMARY KEY (k_nik)
 );
 
@@ -30,8 +40,8 @@ CREATE TABLE kedai (
 -- Table: meja
 CREATE TABLE meja (
     me_id char(2)  NOT NULL,
-    me_customer_datang timestamp  NOT NULL,
-    me_customer_pergi timestamp,
+    me_kapasitas timestamp  NOT NULL,
+    me_status boolean  NOT NULL,
     CONSTRAINT meja_pk PRIMARY KEY (me_id)
 );
 
@@ -52,16 +62,8 @@ CREATE TABLE menu (
     mn_nama varchar(20)  NOT NULL,
     mn_harga int  NOT NULL,
     mn_jenis varchar(20)  NOT NULL,
-    kedai_ked_id char(10)  NOT NULL,
+    kedai_ked_id char(3)  NOT NULL,
     CONSTRAINT menu_pk PRIMARY KEY (mn_id)
-);
-
--- Table: status_meja
-CREATE TABLE status_meja (
-    sm_id char(2)  NOT NULL,
-    sm_status boolean  NOT NULL,
-    meja_me_id char(2)  NOT NULL,
-    CONSTRAINT status_meja_pk PRIMARY KEY (sm_id)
 );
 
 -- Table: transaksi
@@ -84,39 +86,49 @@ CREATE TABLE transaksi_meja (
 -- Table: transaksi_menu
 CREATE TABLE transaksi_menu (
     transaksi_t_id char(10)  NOT NULL,
-    menu_mn_id char(10)  NOT NULL,
+    menu_mn_id char(3)  NOT NULL,
     CONSTRAINT transaksi_menu_pk PRIMARY KEY (transaksi_t_id,menu_mn_id)
 );
 
 -- foreign keys
+-- Reference: detail_penggunaan_meja_meja (table: detail_penggunaan_meja)
+ALTER TABLE detail_penggunaan_meja ADD CONSTRAINT detail_penggunaan_meja_meja
+    FOREIGN KEY (meja_me_id)
+    REFERENCES meja (me_id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
 -- Reference: kedai_karyawan (table: karyawan)
 ALTER TABLE karyawan ADD CONSTRAINT kedai_karyawan
     FOREIGN KEY (kedai_ked_id)
     REFERENCES kedai (ked_id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
 ;
 
 -- Reference: membership_customer (table: membership)
 ALTER TABLE membership ADD CONSTRAINT membership_customer
     FOREIGN KEY (customer_c_nrp)
     REFERENCES customer (c_nrp)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
 ;
 
 -- Reference: menu_kedai (table: menu)
 ALTER TABLE menu ADD CONSTRAINT menu_kedai
     FOREIGN KEY (kedai_ked_id)
     REFERENCES kedai (ked_id)  
-;
-
--- Reference: status_meja_meja (table: status_meja)
-ALTER TABLE status_meja ADD CONSTRAINT status_meja_meja
-    FOREIGN KEY (meja_me_id)
-    REFERENCES meja (me_id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_customer (table: transaksi)
 ALTER TABLE transaksi ADD CONSTRAINT transaksi_customer
     FOREIGN KEY (customer_c_nrp)
     REFERENCES customer (c_nrp)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_karyawan (table: transaksi)
@@ -131,25 +143,32 @@ ALTER TABLE transaksi ADD CONSTRAINT transaksi_karyawan
 ALTER TABLE transaksi_meja ADD CONSTRAINT transaksi_meja_meja
     FOREIGN KEY (meja_me_id)
     REFERENCES meja (me_id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_meja_transaksi (table: transaksi_meja)
 ALTER TABLE transaksi_meja ADD CONSTRAINT transaksi_meja_transaksi
     FOREIGN KEY (transaksi_t_id)
     REFERENCES transaksi (t_id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_menu_menu (table: transaksi_menu)
 ALTER TABLE transaksi_menu ADD CONSTRAINT transaksi_menu_menu
     FOREIGN KEY (menu_mn_id)
     REFERENCES menu (mn_id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_menu_transaksi (table: transaksi_menu)
 ALTER TABLE transaksi_menu ADD CONSTRAINT transaksi_menu_transaksi
     FOREIGN KEY (transaksi_t_id)
     REFERENCES transaksi (t_id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
 ;
 
-
-
+-- End of file.
