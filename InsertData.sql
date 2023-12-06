@@ -356,3 +356,15 @@ INSERT INTO MEMBERSHIP (M_ID_MEMBERSHIP,M_NO_TELP,M_ALAMAT,M_TANGGAL_BERGABUNG,M
 ('MEM0000026', '081704193302', 'Tangerang', '03/30/2023', '06/28/2023', '5025250319'),
 ('MEM0000027', '082590803823', 'Depok', '03/31/2023', '06/29/2023', '5025271424');
 
+-- DATA MEJA
+INSERT INTO MEJA (ME_ID, ME_KAPASITAS, ME_STATUS) VALUES 
+  ('M01', 4, '1'),
+  ('M02', 2, '1'),
+  ('M03', 4, '0'),
+  ('M04', 2, '0'),
+  ('M05', 4, '1'),
+  ('M06', 4, '1'),
+  ('M07', 6, '0'),
+  ('M08', 2, '1'),
+  ('M09', 4, '0'),
+  ('M10', 6, '1');
