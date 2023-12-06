@@ -163,3 +163,4 @@ INSERT INTO karyawan (k_nik,k_nama,k_jenis_kelamin,k_email,k_umur,k_no_telp, ked
 ('9892486148938912', 'Patricia Martinez', 'P', 'mpatricia@example.net', 37, '082495875645', 'K03')
 ('5612871662187826', 'Liam Miller', 'P', 'millerl@example.org', 41, '086167895070', 'K04'),
 ('7274267390586417', 'Gary Monroe', 'L', 'monroeg@example.net', 28, '082314253748', 'K04');
+
