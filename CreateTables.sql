@@ -1,6 +1,8 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Last modification date: 2023-12-05 07:53:00.612
 
+CREATE DATABASE KANTIN_INFORMATIKA;
+
 -- tables
 -- Table: customer
 CREATE TABLE customer (
@@ -59,7 +61,7 @@ CREATE TABLE membership (
 -- Table: menu
 CREATE TABLE menu (
     mn_id char(3)  NOT NULL,
-    mn_nama varchar(20)  NOT NULL,
+    mn_nama varchar(100)  NOT NULL,
     mn_harga int  NOT NULL,
     mn_jenis varchar(20)  NOT NULL,
     kedai_ked_id char(3)  NOT NULL,
