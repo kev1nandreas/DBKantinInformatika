@@ -282,7 +282,7 @@ INSERT INTO MEJA (ME_ID, ME_KAPASITAS, ME_STATUS) VALUES
   ('01', 4, '1'),
   ('02', 2, '1'),
   ('03', 4, '0'),
-  ('04', 2, '0'),
+  ('04', 2, '0'),   --1 ARTINYA TERISI 0 ARTINYA KOSONG
   ('05', 4, '1'),
   ('06', 4, '1'),
   ('07', 6, '0'),
