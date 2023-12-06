@@ -152,9 +152,6 @@ INSERT INTO menu (mn_id, mn_nama, mn_harga, mn_jenis, kedai_ked_id) VALUES
   ('C89', 'Ice Blend Chocolate', 12000, 'Minuman', 'K04'),
   ('C90', 'Ice Blend Cappucino', 12000, 'Minuman', 'K04'),
   ('C91', 'Ice Blend Red Velvet', 12000, 'Minuman', 'K04');
-  
-  
-  
 
 --DATA KARYAWAN
 INSERT INTO karyawan (k_nik,k_nama,k_jenis_kelamin,k_email,k_umur,k_no_telp, kedai_ked_id) VALUES
