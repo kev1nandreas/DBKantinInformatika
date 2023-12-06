@@ -95,80 +95,60 @@ CREATE TABLE transaksi_menu (
 ALTER TABLE detail_penggunaan_meja ADD CONSTRAINT detail_penggunaan_meja_meja
     FOREIGN KEY (meja_me_id)
     REFERENCES meja (me_id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: kedai_karyawan (table: karyawan)
 ALTER TABLE karyawan ADD CONSTRAINT kedai_karyawan
     FOREIGN KEY (kedai_ked_id)
     REFERENCES kedai (ked_id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: membership_customer (table: membership)
 ALTER TABLE membership ADD CONSTRAINT membership_customer
     FOREIGN KEY (customer_c_nrp)
     REFERENCES customer (c_nrp)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: menu_kedai (table: menu)
 ALTER TABLE menu ADD CONSTRAINT menu_kedai
     FOREIGN KEY (kedai_ked_id)
     REFERENCES kedai (ked_id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_customer (table: transaksi)
 ALTER TABLE transaksi ADD CONSTRAINT transaksi_customer
     FOREIGN KEY (customer_c_nrp)
     REFERENCES customer (c_nrp)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_karyawan (table: transaksi)
 ALTER TABLE transaksi ADD CONSTRAINT transaksi_karyawan
     FOREIGN KEY (karyawan_k_nik)
     REFERENCES karyawan (k_nik)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_meja_meja (table: transaksi_meja)
 ALTER TABLE transaksi_meja ADD CONSTRAINT transaksi_meja_meja
     FOREIGN KEY (meja_me_id)
     REFERENCES meja (me_id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_meja_transaksi (table: transaksi_meja)
 ALTER TABLE transaksi_meja ADD CONSTRAINT transaksi_meja_transaksi
     FOREIGN KEY (transaksi_t_id)
     REFERENCES transaksi (t_id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_menu_menu (table: transaksi_menu)
 ALTER TABLE transaksi_menu ADD CONSTRAINT transaksi_menu_menu
     FOREIGN KEY (menu_mn_id)
     REFERENCES menu (mn_id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: transaksi_menu_transaksi (table: transaksi_menu)
 ALTER TABLE transaksi_menu ADD CONSTRAINT transaksi_menu_transaksi
     FOREIGN KEY (transaksi_t_id)
     REFERENCES transaksi (t_id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- End of file.
