@@ -1,4 +1,5 @@
 --DATA KEDAI
+
 INSERT INTO kedai (ked_id, ked_nama) VALUES
   ('K01', 'Warung Bu Sol'),
   ('K02', 'Kedai Mak Nanun'),
@@ -6,6 +7,7 @@ INSERT INTO kedai (ked_id, ked_nama) VALUES
   ('K04', 'Ombens IF');
 
 --DATA KARYAWAN
+
 INSERT INTO karyawan (k_nik,k_nama,k_jenis_kelamin,k_email,k_umur,k_no_telp, kedai_ked_id) VALUES
   ('1264683115471700', 'Carol Williams', 'L', 'wcarol@example.org', 29, '082542333815', 'K02'),
   ('4246321716258604', 'Sara Rogers', 'P', 'rsara@example.net', 35, '082658104522', 'K03'),
@@ -17,6 +19,7 @@ INSERT INTO karyawan (k_nik,k_nama,k_jenis_kelamin,k_email,k_umur,k_no_telp, ked
   ('7274267390586417', 'Gary Monroe', 'L', 'monroeg@example.net', 28, '082314253748', 'K04');
 
 --TABEL MEMBERSHIP
+
 INSERT INTO MEMBERSHIP (M_ID_MEMBERSHIP,M_NO_TELP,M_ALAMAT,M_TANGGAL_BERGABUNG,M_TANGGAL_KADLUWARSA, CUSTOMER_C_NRP) VALUES
 ('MEM0000001', '088433239636', 'Batam', '01/01/2023', '04/01/2023', '5025250564'),
 ('MEM0000002', '083364138506', 'Palembang', '01/08/2023', '04/08/2023', '5025261227'),
@@ -47,6 +50,7 @@ INSERT INTO MEMBERSHIP (M_ID_MEMBERSHIP,M_NO_TELP,M_ALAMAT,M_TANGGAL_BERGABUNG,M
 ('MEM0000027', '082590803823', 'Depok', '03/31/2023', '06/29/2023', '5025271424');
 
 -- DATA MEJA
+
 INSERT INTO MEJA (ME_ID, ME_KAPASITAS, ME_STATUS) VALUES 
   ('01', 4, '1'),
   ('02', 2, '1'),
