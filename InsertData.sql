@@ -111,7 +111,17 @@ INSERT INTO menu (mn_id, mn_nama, mn_harga, mn_jenis, kedai_ked_id) VALUES
   ('C48', 'Telor Ceplok', 3000, 'Makanan', 'K01'),
   ('C49', 'Telor Dadar', 3000, 'Makanan', 'K01'),
   ('C50', 'Bakwan Jagung', 1000, 'Makanan', 'K01'),
-  ('C51', 'Tahu/Tempe', 1000, 'Makanan', 'K01');
+  ('C51', 'Tahu/Tempe', 1000, 'Makanan', 'K01'),
+  ('C52', 'Teh Kotak', 5000, 'Minuman', 'K03'),
+  ('C53', 'Club Air Mineral', 3000, 'Minuman', 'K03'),
+  ('C54', 'You C1000 Isotonic Drink Orange Water', 11000, 'Minuman', 'K03'),
+  ('C55', 'You C1000 Health Drink Vitamin Orange', 8000, 'Minuman', 'K03'),
+  ('C56', 'Teh Pucuk', 4000, 'Minuman', 'K03'),
+  ('C57', 'Ultra Susu Uht Steril Slim Coklat', 7000, 'Minuman', 'K03'),
+  ('C58', 'Mogu-Mogu Minuman Nata De Coco Melon', 12000, 'Minuman', 'K03'),
+  ('C59', 'Minute Maid Juice Pulpy Orange', 6000, 'Minuman', 'K03');
+  
+  
   
 
 --DATA KARYAWAN
