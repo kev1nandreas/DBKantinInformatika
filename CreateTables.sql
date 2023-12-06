@@ -40,7 +40,7 @@ CREATE TABLE kedai (
 -- Table: meja
 CREATE TABLE meja (
     me_id char(2)  NOT NULL,
-    me_kapasitas timestamp  NOT NULL,
+    me_kapasitas int  NOT NULL,
     me_status boolean  NOT NULL,
     CONSTRAINT meja_pk PRIMARY KEY (me_id)
 );
