@@ -87,14 +87,14 @@ INSERT INTO MEMBERSHIP (M_ID_MEMBERSHIP,M_NO_TELP,M_ALAMAT,M_TANGGAL_BERGABUNG,M
 
 -- DATA MEJA
 
-INSERT INTO MEJA (ME_ID, ME_KAPASITAS, ME_STATUS), VALUES 
-  ('01', 4, '1'),
-  ('02', 2, '1'),
-  ('03', 4, '0'),
-  ('04', 2, '0'),   -- STATUS 1 ARTINYA TERISI 
-  ('05', 4, '1'),   -- STATUS 0 ARTINYA KOSONG
-  ('06', 4, '1'),
-  ('07', 6, '0'),
-  ('08', 2, '1'),
-  ('09', 4, '0'),
-  ('10', 4, '0');
+INSERT INTO MEJA (ME_ID, ME_KAPASITAS) VALUES 
+  ('JM01', 4),
+  ('JD02', 2),
+  ('JM03', 4),
+  ('JD04', 2),   
+  ('JM05', 4),   
+  ('JM06', 4),
+  ('JN07', 6),
+  ('JD08', 2),
+  ('JM09', 4),
+  ('JM10', 4);
