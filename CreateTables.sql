@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-12-07 13:23:02.194
+-- Last modification date: 2023-12-09 08:17:05.61
 
 -- tables
 -- Table: customer
@@ -42,6 +42,7 @@ CREATE TABLE membership (
     m_alamat varchar(250)  NOT NULL,
     m_tanggal_bergabung date  NOT NULL,
     m_tanggal_kadluwarsa date  NOT NULL,
+    m_poin int  NOT NULL,
     customer_c_nrp char(10)  NOT NULL,
     CONSTRAINT membership_pk PRIMARY KEY (m_id_membership)
 );
