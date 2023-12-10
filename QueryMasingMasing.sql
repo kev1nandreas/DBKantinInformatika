@@ -90,6 +90,14 @@ WHERE C.C_NRP = T.CUSTOMER_C_NRP AND
     R.R_CUSTOMER_DATANG BETWEEN '11/17/2023 00:00:00' AND '11/17/2023 23:59:00'
 GROUP BY C.C_NAMA, ME.ME_ID;
 
+--query kukuh
+--Dapatkan daftar transaksi beserta informasi reservasi dan nama pelanggan yang melakukan transaksi.
+SELECT t.t_id, t.t_tanggal_transaksi, r.r_customer_datang, r.r_customer_pergi, c.c_nama
+FROM transaksi t
+JOIN reservasi r ON t.t_id = t.t_id
+JOIN customer c ON t.customer_c_nrp = c.c_nrp
+WHERE c.c_nrp = '5025250319'
+ORDER BY t.t_tanggal_transaksi DESC;
 
 
 
