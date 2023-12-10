@@ -1,6 +1,9 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Last modification date: 2023-12-09 08:17:05.61
 
+--database
+CREATE DATABASE KANTIN_INFORMATIKA;
+
 -- tables
 -- Table: customer
 CREATE TABLE customer (
