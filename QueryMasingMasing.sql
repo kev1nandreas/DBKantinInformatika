@@ -99,6 +99,31 @@ JOIN customer c ON t.customer_c_nrp = c.c_nrp
 WHERE c.c_nrp = '5025250319'
 ORDER BY t.t_tanggal_transaksi DESC;
 
+--Tampilkan total transaksi untuk setiap metode pembayaran, dan urutkan yang terbesar.
+SELECT t.t_metode_pembayaran, COUNT(*) AS "Total Transaksi"
+ FROM transaksi t
+GROUP BY t.t_metode_pembayaran
+ORDER BY "Total Transaksi" DESC;
+
+--Tampilkan semua transaksi dengan nama pelanggan yang mengandung 'J'.
+SELECT *
+FROM transaksi
+WHERE customer_c_nrp IN (
+    SELECT c_nrp
+    FROM customer
+    WHERE c_nama LIKE 'J%'
+);
+
+--Tampilkan semua reservasi yang melibatkan meja dengan kapasitas 2.
+SELECT * 
+FROM (
+    SELECT r.*, m.*
+    FROM reservasi r
+    JOIN reservasi_meja rm ON r.r_id = rm.reservasi_r_id
+    JOIN meja m ON rm.meja_me_id = m.me_id
+) AS r
+WHERE r.me_kapasitas > 2;
+
 
 
 
