@@ -28,4 +28,55 @@ FROM karyawan
 ORDER BY jumlah_transaksi DESC;
 
 
+--query hamas
+--Tampilkan daftar menu yang dibeli dengan menggunakan metode pembayaran tunai dan total harga lebih dari 10000
+SELECT MN.MN_NAMA, SUM(MN.MN_HARGA) AS TOTAL_PEMBELIAN
+FROM TRANSAKSI TR
+JOIN TRANSAKSI_MENU TM ON TR.T_ID = TM.TRANSAKSI_T_ID
+JOIN MENU MN ON TM.MENU_MN_ID = MN.MN_ID
+WHERE TR.T_METODE_PEMBAYARAN = 'Tunai'
+GROUP BY MN.MN_NAMA
+HAVING SUM(MN.MN_HARGA) > 10000;
+
+--Tampilkan transaksi yang dilayani oleh karyawan dan diurutkan berdasarkan total transaksi terbesar
+SELECT K.K_NAMA, COUNT(TR.T_ID) AS TOTAL_TRANSAKSI
+FROM TRANSAKSI TR
+JOIN KARYAWAN K ON TR.KARYAWAN_K_NIK = K.K_NIK
+GROUP BY K.K_NAMA
+ORDER BY TOTAL_TRANSAKSI DESC;
+
+--Tampilkan nama karyawan yang bekerja di ombens if
+SELECT K.K_NAMA
+FROM KARYAWAN K
+WHERE K.KEDAI_KED_ID =(
+	SELECT KED_ID
+	FROM KEDAI
+	WHERE KED_NAMA = 'Ombens IF'
+);
+
+--Tampilkan customer yang memiliki Pembelian terbesar
+SELECT C.C_NAMA, TOTAL_PEMBELIAN.TOTAL_BELANJA
+FROM CUSTOMER C
+JOIN (
+    SELECT T.CUSTOMER_C_NRP, SUM(M.MN_HARGA) AS TOTAL_BELANJA
+    FROM TRANSAKSI T
+    JOIN TRANSAKSI_MENU TM ON T.T_ID = TM.TRANSAKSI_T_ID
+    JOIN MENU M ON TM.MENU_MN_ID = M.MN_ID
+    GROUP BY T.CUSTOMER_C_NRP
+    ORDER BY TOTAL_BELANJA DESC
+    LIMIT 1
+) AS TOTAL_PEMBELIAN ON C.C_NRP = TOTAL_PEMBELIAN.CUSTOMER_C_NRP;
+
 --query
+
+
+
+
+
+
+
+
+
+
+
+
