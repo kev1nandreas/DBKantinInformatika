@@ -70,13 +70,25 @@ JOIN (
 --query kevin
 
 --Tampilkan menu yang memiliki banyak pembelian lebih dari 3 kali dan berjenis makanan
-SELECT M.mn_id, M.MN_NAMA, M.MN_HARGA, M.mn_jenis 
-FROM menu M, transaksi_menu TM, transaksi T
-WHERE M.mn_id = TM.MENU_MN_ID AND
+SELECT M.MN_ID, M.MN_NAMA, M.MN_HARGA, M.MN_JENIS 
+FROM MENU M, TRANSAKSI_MENU TM, TRANSAKSI T
+WHERE M.MN_ID = TM.MENU_MN_ID AND
     TM.TRANSAKSI_T_ID = T.T_ID AND
-    M.mn_jenis = 'Makanan'
-GROUP BY M.mn_id  
+    M.MN_JENIS = 'MAKANAN'
+GROUP BY M.MN_ID  
 HAVING COUNT (MENU_MN_ID) > 3;
+
+--Tampilkan nama customer, id meja, dan total harga yang melakukan reservasi meja pada tanggal 17 November 2023
+SELECT C.c_nama, ME.ME_ID, SUM(MN_HARGA) AS TOTAL_BELANJA
+FROM CUSTOMER C, TRANSAKSI T, TRANSAKSI_MENU TM, MENU M, RESERVASI R, RESERVASI_MEJA RM, MEJA ME
+WHERE C.C_NRP = T.CUSTOMER_C_NRP AND
+    T.T_ID = R.TRANSAKSI_T_ID AND
+    R.R_ID = RM.RESERVASI_R_ID AND
+    RM.MEJA_ME_ID = ME.ME_ID AND
+    T.T_ID = TM.TRANSAKSI_T_ID AND
+    TM.MENU_MN_ID = M.MN_ID AND
+    R.R_CUSTOMER_DATANG BETWEEN '11/17/2023 00:00:00' AND '11/17/2023 23:59:00'
+GROUP BY C.C_NAMA, ME.ME_ID;
 
 
 
