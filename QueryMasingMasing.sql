@@ -1,4 +1,5 @@
---querydaffa
+--query daffa
+
 --menampilkan nama customer dan karyawan yang melakukan transaksi pada tanggal 25 september 2023 - 10 oktober 2023 dengan metode pembayaran Kartu debit
 SELECT c_nama, k_nama
 FROM customer
@@ -6,12 +7,14 @@ JOIN transaksi ON customer_c_nrp = c_nrp
 JOIN karyawan ON k_nik = karyawan_k_nik
 WHERE t_tanggal_transaksi BETWEEN '2023-09-25' AND '2023-10-10'
 AND t_metode_pembayaran = 'Kartu debit';
+
 --menampilkan nama tiap kedai dan jumlah menu dengan jenis menu Makanan di setiap kedai yang diurutkan berdasarkan nama kedai
 SELECT ked_nama, COUNT(mn_id) AS jumlah_menu
 FROM kedai
 LEFT JOIN menu ON kedai_ked_id = ked_id AND mn_jenis = 'Makanan'
 GROUP BY ked_nama
 ORDER BY ked_nama;
+
 --menampilkan data customer yang membershipnya kadaluarsa di tahun 2023
 SELECT * FROM customer
 WHERE c_nrp IN (
@@ -19,6 +22,7 @@ WHERE c_nrp IN (
     FROM membership
     WHERE EXTRACT(YEAR FROM m_tanggal_kadluwarsa) = 2023
 );
+
 --menampilkan nama karyawan dan jumlah transaksi yang dilakukan oleh karyawan tersebut yang kemudian diurutkan berdasarkan jumlah transaksi terbanyak
 SELECT k_nama, 
        (SELECT COUNT(t_id)
@@ -29,6 +33,7 @@ ORDER BY jumlah_transaksi DESC;
 
 
 --query hamas
+
 --Tampilkan daftar menu yang dibeli dengan menggunakan metode pembayaran tunai dan total harga lebih dari 10000
 SELECT MN.MN_NAMA, SUM(MN.MN_HARGA) AS TOTAL_PEMBELIAN
 FROM TRANSAKSI TR
@@ -74,7 +79,7 @@ SELECT M.MN_ID, M.MN_NAMA, M.MN_HARGA, M.MN_JENIS
 FROM MENU M, TRANSAKSI_MENU TM, TRANSAKSI T
 WHERE M.MN_ID = TM.MENU_MN_ID AND
     TM.TRANSAKSI_T_ID = T.T_ID AND
-    M.MN_JENIS = 'MAKANAN'
+    M.MN_JENIS = 'Makanan'
 GROUP BY M.MN_ID  
 HAVING COUNT (MENU_MN_ID) > 3;
 
@@ -90,7 +95,27 @@ WHERE C.C_NRP = T.CUSTOMER_C_NRP AND
     R.R_CUSTOMER_DATANG BETWEEN '11/17/2023 00:00:00' AND '11/17/2023 23:59:00'
 GROUP BY C.C_NAMA, ME.ME_ID;
 
+--Tampilkan data dan banyak transaksi customer yang memiliki poin membership lebih dari 2
+SELECT C.C_NRP, C.C_NAMA, M.M_ID_MEMBERSHIP, COUNT(DISTINCT T.T_ID)  AS BANYAK_TRANSAKSI
+FROM MEMBERSHIP M, CUSTOMER C, TRANSAKSI T
+WHERE C.C_NRP = M.CUSTOMER_C_NRP AND
+    C.C_NRP = T.CUSTOMER_C_NRP AND
+    M.M_POIN > 2
+GROUP BY C.C_NRP, M.M_ID_MEMBERSHIP;
+
+--Tampilkan history penggunaan meja JM01 beserta menu yang dipesan oleh meja tersebut
+SELECT R.R_ID, C.C_NAMA AS NAMA_PEMESAN, R.R_CUSTOMER_DATANG, R.R_CUSTOMER_PERGI, MN.MN_NAMA
+FROM MEJA ME, RESERVASI_MEJA RM, RESERVASI R, TRANSAKSI T, CUSTOMER C, TRANSAKSI_MENU TM, MENU MN
+WHERE ME.ME_ID = RM.MEJA_ME_ID AND
+    RM.RESERVASI_R_ID = R.R_ID AND
+    R.TRANSAKSI_T_ID = T.T_ID AND
+    T.CUSTOMER_C_NRP = C.C_NRP AND
+    T.T_ID = TM.TRANSAKSI_T_ID AND
+    TM.MENU_MN_ID = MN.MN_ID AND
+    ME.ME_ID = 'JM01';
+
 --query kukuh
+
 --Dapatkan daftar transaksi beserta informasi reservasi dan nama pelanggan yang melakukan transaksi.
 SELECT t.t_id, t.t_tanggal_transaksi, r.r_customer_datang, r.r_customer_pergi, c.c_nama
 FROM transaksi t
