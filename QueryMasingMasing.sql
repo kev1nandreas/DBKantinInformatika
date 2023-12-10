@@ -12,6 +12,13 @@ FROM kedai
 LEFT JOIN menu ON kedai_ked_id = ked_id AND mn_jenis = 'Makanan'
 GROUP BY ked_nama
 ORDER BY ked_nama;
+--3
+SELECT * FROM customer
+WHERE c_nrp IN (
+    SELECT customer_c_nrp
+    FROM membership
+    WHERE EXTRACT(YEAR FROM m_tanggal_kadluwarsa) = 2023
+);
 
 
 --query
