@@ -23,7 +23,7 @@ WHERE c_nrp IN (
 SELECT k_nama, 
        (SELECT COUNT(t_id)
         FROM transaksi
-        WHERE transaksi.karyawan_k_nik = karyawan.k_nik) AS jumlah_transaksi
+        WHERE karyawan_k_nik = k_nik) AS jumlah_transaksi
 FROM karyawan
 ORDER BY jumlah_transaksi DESC;
 
