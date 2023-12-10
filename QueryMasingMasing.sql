@@ -19,6 +19,15 @@ WHERE c_nrp IN (
     FROM membership
     WHERE EXTRACT(YEAR FROM m_tanggal_kadluwarsa) = 2023
 );
-
+--4
+SELECT k_nama, jumlah_transaksi
+FROM (
+    SELECT k_nama, COUNT(t_id) AS jumlah_transaksi
+    FROM karyawan 
+    LEFT JOIN transaksi ON k_nik = karyawan_k_nik
+    WHERE EXTRACT(MONTH FROM t_tanggal_transaksi) = 9
+    GROUP BY k_nama
+)
+ORDER BY jumlah_transaksi ASC;
 
 --query
