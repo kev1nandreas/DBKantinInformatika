@@ -25,6 +25,7 @@ SELECT k_nama,
         FROM transaksi
         WHERE transaksi.karyawan_k_nik = karyawan.k_nik) AS jumlah_transaksi
 FROM karyawan
-ORDER BY k_nama;
+ORDER BY jumlah_transaksi DESC;
+
 
 --query
