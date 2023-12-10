@@ -67,7 +67,16 @@ JOIN (
     LIMIT 1
 ) AS TOTAL_PEMBELIAN ON C.C_NRP = TOTAL_PEMBELIAN.CUSTOMER_C_NRP;
 
---query
+--query kevin
+
+--Tampilkan menu yang memiliki banyak pembelian lebih dari 3 kali dan berjenis makanan
+SELECT M.mn_id, M.MN_NAMA, M.MN_HARGA, M.mn_jenis 
+FROM menu M, transaksi_menu TM, transaksi T
+WHERE M.mn_id = TM.MENU_MN_ID AND
+    TM.TRANSAKSI_T_ID = T.T_ID AND
+    M.mn_jenis = 'Makanan'
+GROUP BY M.mn_id  
+HAVING COUNT (MENU_MN_ID) > 3;
 
 
 
