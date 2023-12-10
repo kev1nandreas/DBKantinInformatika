@@ -123,6 +123,7 @@ FROM (
     JOIN meja m ON rm.meja_me_id = m.me_id
 ) AS r
 WHERE r.me_kapasitas > 2;
+ORDER BY r ASC;
 
 
 
