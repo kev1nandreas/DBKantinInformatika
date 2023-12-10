@@ -1,25 +1,25 @@
 --querydaffa
---1
+--menampilkan nama customer dan karyawan yang melakukan transaksi pada tanggal 25 september 2023 - 10 oktober 2023 dengan metode pembayaran Kartu debit
 SELECT c_nama, k_nama
 FROM customer
 JOIN transaksi ON customer_c_nrp = c_nrp
 JOIN karyawan ON k_nik = karyawan_k_nik
 WHERE t_tanggal_transaksi BETWEEN '2023-09-25' AND '2023-10-10'
 AND t_metode_pembayaran = 'Kartu debit';
---2
+--menampilkan nama tiap kedai dan jumlah menu dengan jenis menu Makanan di setiap kedai yang diurutkan berdasarkan nama kedai
 SELECT ked_nama, COUNT(mn_id) AS jumlah_menu
 FROM kedai
 LEFT JOIN menu ON kedai_ked_id = ked_id AND mn_jenis = 'Makanan'
 GROUP BY ked_nama
 ORDER BY ked_nama;
---3
+--menampilkan data customer yang membershipnya kadaluarsa di tahun 2023
 SELECT * FROM customer
 WHERE c_nrp IN (
     SELECT customer_c_nrp
     FROM membership
     WHERE EXTRACT(YEAR FROM m_tanggal_kadluwarsa) = 2023
 );
---4
+--menampilkan nama karyawan dan jumlah transaksi yang dilakukan oleh karyawan tersebut yang kemudian diurutkan berdasarkan jumlah transaksi terbanyak
 SELECT k_nama, 
        (SELECT COUNT(t_id)
         FROM transaksi
