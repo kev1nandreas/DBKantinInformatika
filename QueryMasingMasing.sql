@@ -45,14 +45,14 @@ ORDER BY jumlah_transaksi DESC;
 
 --query hamas
 
---Tampilkan daftar menu yang dibeli dengan menggunakan metode pembayaran tunai dan total harga lebih dari 10000
-SELECT MN.MN_NAMA, SUM(MN.MN_HARGA) AS TOTAL_PEMBELIAN
-FROM TRANSAKSI TR
-JOIN TRANSAKSI_MENU TM ON TR.T_ID = TM.TRANSAKSI_T_ID
-JOIN MENU MN ON TM.MENU_MN_ID = MN.MN_ID
-WHERE TR.T_METODE_PEMBAYARAN = 'Tunai'
-GROUP BY MN.MN_NAMA
-HAVING SUM(MN.MN_HARGA) > 10000;
+--Tampilkan nomor transaksi dan nama orang yang memiliki membership dengan alamat di Surabaya serta melakukan transaksi pada tahun 2023.
+SELECT T.T_ID, C.C_NAMA, M.M_ALAMAT
+FROM TRANSAKSI T
+JOIN CUSTOMER C ON T.CUSTOMER_C_NRP = C.C_NRP
+JOIN MEMBERSHIP M ON T.CUSTOMER_C_NRP = M.CUSTOMER_C_NRP
+WHERE EXTRACT(YEAR FROM T.T_TANGGAL_TRANSAKSI) = 2023
+AND M.M_ALAMAT LIKE '%Surabaya%';
+
 
 --Tampilkan transaksi yang dilayani oleh karyawan dan diurutkan berdasarkan total transaksi terbesar
 SELECT K.K_NAMA, COUNT(TR.T_ID) AS TOTAL_TRANSAKSI
