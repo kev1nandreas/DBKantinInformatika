@@ -23,13 +23,24 @@ WHERE c_nrp IN (
     WHERE EXTRACT(YEAR FROM m_tanggal_kadluwarsa) = 2023
 );
 
---menampilkan nama karyawan dan jumlah transaksi yang dilakukan oleh karyawan tersebut yang kemudian diurutkan berdasarkan jumlah transaksi terbanyak
-SELECT k_nama, 
-       (SELECT COUNT(t_id)
-        FROM transaksi
-        WHERE karyawan_k_nik = k_nik) AS jumlah_transaksi
-FROM karyawan
+--menampilkan nrp customer, nama customer, dan jumlah transaksi yang dilakukan oleh customer yang tergabung dengan membership di bulan Oktober yang kemudian diurutkan berdasarkan jumlah transaksi terbanyak
+SELECT c_nrp, c_nama, (
+	SELECT COUNT(t_id)
+	FROM transaksi
+	WHERE customer_c_nrp = c_nrp
+) AS jumlah_transaksi
+FROM customer
+WHERE c_nrp IN (
+	SELECT customer_c_nrp
+	FROM transaksi 
+	WHERE EXTRACT(MONTH FROM t_tanggal_transaksi ) = 10
+) AND c_nrp IN(
+	SELECT customer_c_nrp
+	FROM membership
+)
+GROUP BY c_nrp
 ORDER BY jumlah_transaksi DESC;
+
 
 
 --query hamas
