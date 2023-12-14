@@ -84,7 +84,6 @@ ORDER BY TOTAL_TRANSAKSI DESC;
 
 
 
-
 --query kevin
 
 --Tampilkan transaksi, nama yang memiliki banyak pembelian lebih dari rata-rata banyak pembelian dan berjenis makanan
