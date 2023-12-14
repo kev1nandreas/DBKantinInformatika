@@ -113,17 +113,16 @@ WHERE C.C_NRP = T.CUSTOMER_C_NRP AND
 GROUP BY C.C_NAMA, ME.ME_ID
 ORDER BY TOTAL_BELANJA ASC;
 
---Tampilkan data dan banyak transaksi customer yang memiliki poin membership lebih dari 2 dan berhuruf awal J
-SELECT C.C_NRP, C.C_NAMA, M.M_ID_MEMBERSHIP, COUNT(DISTINCT T.T_ID)  AS BANYAK_TRANSAKSI
-FROM MEMBERSHIP M, CUSTOMER C, TRANSAKSI T
-WHERE C.C_NRP = M.CUSTOMER_C_NRP AND
+--Tampilkan data karyawan yang pernah melayani customer dengan nama Lindsey Small
+SELECT K.K_NIK, K.K_NAMA, K.K_JENIS_KELAMIN, K.K_EMAIL, K.K_UMUR, K.K_NO_TELP
+FROM KARYAWAN K, CUSTOMER C, TRANSAKSI T
+WHERE T.KARYAWAN_K_NIK = K.K_NIK AND
     C.C_NRP = T.CUSTOMER_C_NRP AND
-    M.M_POIN > 2 AND
     C.C_NRP IN (
         SELECT C_NRP FROM CUSTOMER
-        WHERE C_NAMA LIKE 'J%'
+        WHERE C_NAMA LIKE 'Lindsey Small'
     )
-GROUP BY C.C_NRP, M.M_ID_MEMBERSHIP;
+GROUP BY K.K_NIK;
 
 --Tampilkan history penggunaan meja JM01 beserta menu yang dipesan oleh meja tersebut
 SELECT ME.ME_ID, R.R_ID, C.C_NAMA AS NAMA_PEMESAN, R.R_CUSTOMER_DATANG, R.R_CUSTOMER_PERGI, MN.MN_NAMA
