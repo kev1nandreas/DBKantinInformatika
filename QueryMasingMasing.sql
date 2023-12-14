@@ -43,6 +43,7 @@ ORDER BY jumlah_transaksi DESC;
 
 
 
+
 --query hamas
 
 --Tampilkan nomor transaksi dan nama orang yang memiliki membership dengan alamat di Surabaya serta melakukan transaksi pada tahun 2023.
@@ -52,7 +53,6 @@ JOIN CUSTOMER C ON T.CUSTOMER_C_NRP = C.C_NRP
 JOIN MEMBERSHIP M ON T.CUSTOMER_C_NRP = M.CUSTOMER_C_NRP
 WHERE EXTRACT(YEAR FROM T.T_TANGGAL_TRANSAKSI) = 2023
 AND M.M_ALAMAT LIKE '%Surabaya%';
-
 
 --Tampilkan transaksi yang dilayani oleh karyawan dan diurutkan berdasarkan total transaksi terbesar
 SELECT K.K_NAMA, COUNT(TR.T_ID) AS TOTAL_TRANSAKSI
@@ -70,7 +70,6 @@ WHERE C_NRP IN (
     WHERE T_METODE_PEMBAYARAN <> 'Tunai'
 );
 
-
 --Tampilkan customer yang memiliki Pembelian terbesar
 SELECT C.C_NAMA, TOTAL_PEMBELIAN.TOTAL_BELANJA
 FROM CUSTOMER C
@@ -83,6 +82,9 @@ JOIN (
     ORDER BY TOTAL_BELANJA DESC
     LIMIT 1
 ) AS TOTAL_PEMBELIAN ON C.C_NRP = TOTAL_PEMBELIAN.CUSTOMER_C_NRP;
+
+
+
 
 --query kevin
 
@@ -134,6 +136,9 @@ WHERE ME.ME_ID = RM.MEJA_ME_ID AND
         WHERE me_kapasitas = 6
     )
 ORDER BY C.C_NAMA ASC;
+
+
+
 
 --query kukuh
 
