@@ -61,14 +61,15 @@ JOIN KARYAWAN K ON TR.KARYAWAN_K_NIK = K.K_NIK
 GROUP BY K.K_NAMA
 ORDER BY TOTAL_TRANSAKSI DESC;
 
---Tampilkan nama karyawan yang bekerja di ombens if
-SELECT K.K_NAMA
-FROM KARYAWAN K
-WHERE K.KEDAI_KED_ID =(
-	SELECT KED_ID
-	FROM KEDAI
-	WHERE KED_NAMA = 'Ombens IF'
+--Tampilkan nama dan nrp customer yang melakukan transaksi tetapi tidak menggunakan metode pembayaran tunai
+SELECT C_NRP, C_NAMA
+FROM CUSTOMER
+WHERE C_NRP IN (
+    SELECT DISTINCT CUSTOMER_C_NRP
+    FROM TRANSAKSI
+    WHERE T_METODE_PEMBAYARAN <> 'Tunai'
 );
+
 
 --Tampilkan customer yang memiliki Pembelian terbesar
 SELECT C.C_NAMA, TOTAL_PEMBELIAN.TOTAL_BELANJA
