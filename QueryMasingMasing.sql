@@ -96,10 +96,8 @@ WHERE M.MN_ID = TM.MENU_MN_ID AND
     M.MN_JENIS = 'Makanan'
 GROUP BY M.MN_ID  
 HAVING COUNT (MENU_MN_ID) > (
-    SELECT COUNT (DISTINCT TRANSAKSI_T_ID) AS RATA_RATA_PEMBELIAN 
+    SELECT COUNT(MENU_MN_ID) / COUNT (DISTINCT TRANSAKSI_T_ID) 
     FROM TRANSAKSI_MENU
-    GROUP BY MENU_MN_ID
-    ORDER BY MENU_MN_ID
 );
 
 --Tampilkan nama customer, id meja, dan total harga yang melakukan reservasi meja pada tanggal 17 November 2023
