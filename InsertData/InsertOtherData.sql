@@ -53,14 +53,14 @@ INSERT INTO MEMBERSHIP (M_ID_MEMBERSHIP,M_NO_TELP,M_ALAMAT,M_TANGGAL_BERGABUNG,M
 
 -- DATA MEJA
 
-INSERT INTO MEJA (ME_ID, ME_KAPASITAS) VALUES 
-  ('JM01', 4),
-  ('JD02', 2),
-  ('JM03', 4),
-  ('JD04', 2),   
-  ('JM05', 4),   
-  ('JM06', 4),
-  ('JN07', 6),
-  ('JD08', 2),
-  ('JM09', 4),
-  ('JM10', 4);
+INSERT INTO MEJA (ME_ID, ME_KAPASITAS, ME_STATUS) VALUES 
+  ('JM01', 4, 0),
+  ('JD02', 2, 0),
+  ('JM03', 4, 0),
+  ('JD04', 2, 0),   --1 Keisi 0 Kosong
+  ('JM05', 4, 0),   
+  ('JM06', 4, 0),
+  ('JN07', 6, 0),
+  ('JD08', 2, 0),
+  ('JM09', 4, 0),
+  ('JM10', 4, 1);
