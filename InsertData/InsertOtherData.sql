@@ -8,15 +8,16 @@ INSERT INTO kedai (ked_id, ked_nama) VALUES
 
 --DATA KARYAWAN
 
-INSERT INTO karyawan (k_nik,k_nama,k_jenis_kelamin,k_email,k_umur,k_no_telp, kedai_ked_id) VALUES
-  ('1264683115471700', 'Carol Williams', 'L', 'wcarol@example.org', 29, '082542333815', 'K02'),
-  ('4246321716258604', 'Sara Rogers', 'P', 'rsara@example.net', 35, '082658104522', 'K03'),
-  ('6057077645410277', 'Anthony Murphy', 'P', 'manthony@example.net', 23, '082564889565', 'K01'),
-  ('2508714836124945', 'Janet Kirk', 'P', 'kjanet@example.org', 25, '082601792606', 'K01'),
-  ('9298557228857178', 'Jennifer Buchanan', 'L', 'bjennifer@example.org', 40, '082705139266', 'K02'),
-  ('9892486148938912', 'Patricia Martinez', 'P', 'mpatricia@example.net', 37, '082495875645', 'K03'),
-  ('5612871662187826', 'Liam Miller', 'P', 'millerl@example.org', 41, '086167895070', 'K04'),
-  ('7274267390586417', 'Gary Monroe', 'L', 'monroeg@example.net', 28, '082314253748', 'K04');
+INSERT INTO karyawan (k_nik, k_nama, k_jenis_kelamin, k_email, k_umur, k_no_telp, kedai_ked_id, k_password) VALUES
+('1264683115471700', 'Carol Williams', 'L', 'wcarol@example.org', 29, '082542333815', 'K02', 'C@r0lW!ll!@ms#1'),
+('4246321716258604', 'Sara Rogers', 'P', 'rsara@example.net', 35, '082658104522', 'K03', 'S@r@R0g3rs#2'),
+('6057077645410277', 'Anthony Murphy', 'P', 'manthony@example.net', 23, '082564889565', 'K01', '@nth0nyM!rphy#3'),
+('2508714836124945', 'Janet Kirk', 'P', 'kjanet@example.org', 25, '082601792606', 'K01', 'J@n3tK!rk#4'),
+('9298557228857178', 'Jennifer Buchanan', 'L', 'bjennifer@example.org', 40, '082705139266', 'K02', 'J3nn!f3rBuCH@n@n#5'),
+('9892486148938912', 'Patricia Martinez', 'P', 'mpatricia@example.net', 37, '082495875645', 'K03', 'P@tr!c!@M@rt!n3z#6'),
+('5612871662187826', 'Liam Miller', 'P', 'millerl@example.org', 41, '086167895070', 'K04', 'L!@mM!ll3r#7'),
+('7274267390586417', 'Gary Monroe', 'L', 'monroeg@example.net', 28, '082314253748', 'K04', 'G@ryM0nr03#8');
+
 
 --TABEL MEMBERSHIP
 
