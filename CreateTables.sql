@@ -6,7 +6,7 @@
 CREATE TABLE customer (
     c_nrp char(10)  NOT NULL,
     c_nama varchar(250)  NOT NULL,
-    c_password varchar(8)  NOT NULL,
+    c_password varchar(20)  NOT NULL,
     CONSTRAINT customer_pk PRIMARY KEY (c_nrp)
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE karyawan (
     k_email varchar(50)  NOT NULL,
     k_umur int  NOT NULL,
     k_no_telp varchar(13)  NOT NULL,
-    k_password varchar(8)  NOT NULL,
+    k_password varchar(20)  NOT NULL,
     kedai_ked_id char(3)  NOT NULL,
     CONSTRAINT karyawan_pk PRIMARY KEY (k_nik)
 );
