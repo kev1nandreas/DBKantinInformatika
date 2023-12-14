@@ -100,7 +100,7 @@ HAVING COUNT (MENU_MN_ID) > (
     FROM TRANSAKSI_MENU
 );
 
---Tampilkan nama customer, id meja, dan total harga yang melakukan reservasi meja pada tanggal 17 November 2023
+--Tampilkan nama customer, id meja, dan total harga yang melakukan reservasi meja pada tanggal 17 November 2023 dan urutkan berdasarkan total belanja terkecil
 SELECT C.C_NAMA, ME.ME_ID, SUM(MN_HARGA) AS TOTAL_BELANJA
 FROM CUSTOMER C, TRANSAKSI T, TRANSAKSI_MENU TM, MENU M, RESERVASI R, RESERVASI_MEJA RM, MEJA ME
 WHERE C.C_NRP = T.CUSTOMER_C_NRP AND
@@ -124,8 +124,8 @@ WHERE T.KARYAWAN_K_NIK = K.K_NIK AND
     )
 GROUP BY K.K_NIK;
 
---Tampilkan history penggunaan meja JM01 beserta menu yang dipesan oleh meja tersebut
-SELECT ME.ME_ID, R.R_ID, C.C_NAMA AS NAMA_PEMESAN, R.R_CUSTOMER_DATANG, R.R_CUSTOMER_PERGI, MN.MN_NAMA
+--Tampilkan history penggunaan meja dengan kapasitas 6 dan banyak menu yang dipesan per reservasi oleh meja tersebut
+SELECT ME.ME_ID, R.R_ID, C.C_NAMA AS NAMA_PEMESAN, R.R_CUSTOMER_DATANG, R.R_CUSTOMER_PERGI, COUNT(MN.MN_NAMA) AS BANYAK_MENU
 FROM MEJA ME, RESERVASI_MEJA RM, RESERVASI R, TRANSAKSI T, CUSTOMER C, TRANSAKSI_MENU TM, MENU MN
 WHERE ME.ME_ID = RM.MEJA_ME_ID AND
     RM.RESERVASI_R_ID = R.R_ID AND
@@ -137,9 +137,8 @@ WHERE ME.ME_ID = RM.MEJA_ME_ID AND
         SELECT ME_ID FROM MEJA
         WHERE me_kapasitas = 6
     )
+GROUP BY ME.ME_ID, R.R_ID, C.C_NAMA
 ORDER BY C.C_NAMA ASC;
-
-
 
 
 --query kukuh
