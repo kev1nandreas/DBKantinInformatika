@@ -1,14 +1,12 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-12-09 08:17:05.61
-
---database
-CREATE DATABASE KANTIN_INFORMATIKA;
+-- Last modification date: 2023-12-14 05:19:06.653
 
 -- tables
 -- Table: customer
 CREATE TABLE customer (
     c_nrp char(10)  NOT NULL,
     c_nama varchar(250)  NOT NULL,
+    c_password varchar(8)  NOT NULL,
     CONSTRAINT customer_pk PRIMARY KEY (c_nrp)
 );
 
@@ -20,6 +18,7 @@ CREATE TABLE karyawan (
     k_email varchar(50)  NOT NULL,
     k_umur int  NOT NULL,
     k_no_telp varchar(13)  NOT NULL,
+    k_password varchar(8)  NOT NULL,
     kedai_ked_id char(3)  NOT NULL,
     CONSTRAINT karyawan_pk PRIMARY KEY (k_nik)
 );
@@ -35,6 +34,7 @@ CREATE TABLE kedai (
 CREATE TABLE meja (
     me_id char(4)  NOT NULL,
     me_kapasitas int  NOT NULL,
+    me_status boolean  NOT NULL,
     CONSTRAINT meja_pk PRIMARY KEY (me_id)
 );
 
@@ -79,8 +79,10 @@ CREATE TABLE reservasi_meja (
 -- Table: transaksi
 CREATE TABLE transaksi (
     t_id char(10)  NOT NULL,
-    t_tanggal_transaksi date  NOT NULL,
+    t_tanggal_transaksi timestamp  NOT NULL,
     t_metode_pembayaran varchar(15)  NOT NULL,
+    t_total int  NOT NULL,
+    t_diskon decimal(8,2)  NULL,
     customer_c_nrp char(10)  NOT NULL,
     karyawan_k_nik char(16)  NOT NULL,
     CONSTRAINT transaksi_pk PRIMARY KEY (t_id)
@@ -97,7 +99,7 @@ CREATE TABLE transaksi_menu (
 -- Reference: detail_penggunaan_meja_transaksi (table: reservasi)
 ALTER TABLE reservasi ADD CONSTRAINT detail_penggunaan_meja_transaksi
     FOREIGN KEY (transaksi_t_id)
-    REFERENCES transaksi (t_id)  
+    REFERENCES transaksi (t_id)     
 ;
 
 -- Reference: kedai_karyawan (table: karyawan)
@@ -133,13 +135,13 @@ ALTER TABLE reservasi_meja ADD CONSTRAINT reservasi_meja_reservasi
 -- Reference: transaksi_customer (table: transaksi)
 ALTER TABLE transaksi ADD CONSTRAINT transaksi_customer
     FOREIGN KEY (customer_c_nrp)
-    REFERENCES customer (c_nrp)  
+    REFERENCES customer (c_nrp)   
 ;
 
 -- Reference: transaksi_karyawan (table: transaksi)
 ALTER TABLE transaksi ADD CONSTRAINT transaksi_karyawan
     FOREIGN KEY (karyawan_k_nik)
-    REFERENCES karyawan (k_nik)  
+    REFERENCES karyawan (k_nik)   
 ;
 
 -- Reference: transaksi_menu_menu (table: transaksi_menu)
