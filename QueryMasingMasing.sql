@@ -165,7 +165,7 @@ WHERE c_nrp IN (
 )
 ORDER BY c_nrp ASC;
 
---Menampilkan jumlah total yang di beli pelanggan dengan id menu C08.
+--Menampilkan jumlah total yang dibeli pelanggan dengan id menu C08.
 SELECT c.c_nama AS "Nama Pelanggan", COUNT(t.t_id) AS total_orders
 FROM customer c
 JOIN transaksi t ON c.c_nrp = t.customer_c_nrp
