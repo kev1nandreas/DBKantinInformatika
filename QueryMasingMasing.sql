@@ -140,7 +140,8 @@ ORDER BY C.C_NAMA ASC;
 
 
 --query kukuh
---Dapatkan daftar transaksi beserta informasi reservasi dan nama pelanggan yang melakukan transaksi.
+--Menampilkan nama customer yang melakukan reservasi dengan tanggal yang
+lebih terbaru dari tanggal 1 januari 2023. Dan menampilkan tanggal reservasinya.
 SELECT t.t_id, t.t_tanggal_transaksi, r.r_customer_datang, r.r_customer_pergi, c.c_nama
 FROM transaksi t
 JOIN reservasi r ON t.t_id = t.t_id
@@ -149,30 +150,35 @@ WHERE c.c_nrp = '5025250319' AND t.t_tanggal_transaksi >= '2023-01-01'
 ORDER BY t.t_tanggal_transaksi 
 LIMIT 3;
 
---Tampilkan total transaksi untuk setiap metode pembayaran, dan urutkan yang terbesar.
-SELECT t.t_metode_pembayaran, COUNT(*) AS "Total Transaksi"
- FROM transaksi t
+--Menampilkan total transaksi untuk setiap metode pembayaran.
+SELECT t.t_metode_pembayaran,
+      COUNT(*) AS "Total Transaksi"
+FROM transaksi t
 GROUP BY t.t_metode_pembayaran
 ORDER BY "Total Transaksi" DESC;
 
---Menampilkan customer yang mendapatkan poin lebih dari 3.
-SELECT c_nrp,c_nama
-FROM customer
-WHERE c_nrp IN (
-    SELECT CUSTOMER_C_NRP
-    FROM membership
+--Menampilkan customer yang mendapat poin lebih dari 3 dan sertakan poin
+mereka.
+SELECT c.c_nrp,c.c_nama,m.m_poin
+  FROM customer c
+  JOIN membership m ON c.c_nrp = m.customer_c_nrp
+WHERE c.c_nrp IN (
+    SELECT m.CUSTOMER_C_NRP
+    FROM membership m
     WHERE M_POIN > 3
 )
 ORDER BY c_nrp ASC;
 
---Menampilkan jumlah total yang dibeli pelanggan dengan id menu C08.
+--Menampilkan siapa saja yang membeli menu makanan dengan id menu 'C12',
+dan total yang ia beli selama berkunjung di kantin.
+
 SELECT c.c_nama AS "Nama Pelanggan", COUNT(t.t_id) AS total_orders
 FROM customer c
 JOIN transaksi t ON c.c_nrp = t.customer_c_nrp
 WHERE t.t_id IN (
-    SELECT tm.transaksi_t_id
-    FROM transaksi_menu tm
-    WHERE tm.menu_mn_id = 'C08'
+SELECT tm.transaksi_t_id
+FROM transaksi_menu tm
+WHERE tm.menu_mn_id = 'C12'
 )
 GROUP BY c.c_nama;
 
