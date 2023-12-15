@@ -140,14 +140,14 @@ ORDER BY C.C_NAMA ASC;
 
 
 --query kukuh
-
 --Dapatkan daftar transaksi beserta informasi reservasi dan nama pelanggan yang melakukan transaksi.
 SELECT t.t_id, t.t_tanggal_transaksi, r.r_customer_datang, r.r_customer_pergi, c.c_nama
 FROM transaksi t
 JOIN reservasi r ON t.t_id = t.t_id
 JOIN customer c ON t.customer_c_nrp = c.c_nrp
-WHERE c.c_nrp = '5025250319'
-ORDER BY t.t_tanggal_transaksi DESC;
+WHERE c.c_nrp = '5025250319' AND t.t_tanggal_transaksi >= '2023-01-01'
+ORDER BY t.t_tanggal_transaksi 
+LIMIT 3;
 
 --Tampilkan total transaksi untuk setiap metode pembayaran, dan urutkan yang terbesar.
 SELECT t.t_metode_pembayaran, COUNT(*) AS "Total Transaksi"
@@ -155,25 +155,26 @@ SELECT t.t_metode_pembayaran, COUNT(*) AS "Total Transaksi"
 GROUP BY t.t_metode_pembayaran
 ORDER BY "Total Transaksi" DESC;
 
---Tampilkan semua transaksi dengan nama pelanggan yang mengandung 'J'.
-SELECT *
-FROM transaksi
-WHERE customer_c_nrp IN (
-    SELECT c_nrp
-    FROM customer
-    WHERE c_nama LIKE 'J%'
-);
+--Menampilkan customer yang mendapatkan poin lebih dari 3.
+SELECT c_nrp,c_nama
+FROM customer
+WHERE c_nrp IN (
+    SELECT CUSTOMER_C_NRP
+    FROM membership
+    WHERE M_POIN > 3
+)
+ORDER BY c_nrp ASC;
 
---Tampilkan semua reservasi yang melibatkan meja dengan kapasitas 2.
-SELECT * 
-FROM (
-    SELECT r.*, m.*
-    FROM reservasi r
-    JOIN reservasi_meja rm ON r.r_id = rm.reservasi_r_id
-    JOIN meja m ON rm.meja_me_id = m.me_id
-) AS r
-WHERE r.me_kapasitas > 2;
-ORDER BY r ASC;
+--Menampilkan jumlah total yang di beli pelanggan dengan id menu C08.
+SELECT c.c_nama AS "Nama Pelanggan", COUNT(t.t_id) AS total_orders
+FROM customer c
+JOIN transaksi t ON c.c_nrp = t.customer_c_nrp
+WHERE t.t_id IN (
+    SELECT tm.transaksi_t_id
+    FROM transaksi_menu tm
+    WHERE tm.menu_mn_id = 'C08'
+)
+GROUP BY c.c_nama;
 
 
 
