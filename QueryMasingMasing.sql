@@ -138,6 +138,19 @@ WHERE ME.ME_ID = RM.MEJA_ME_ID AND
 GROUP BY ME.ME_ID, R.R_ID, C.C_NAMA
 ORDER BY C.C_NAMA ASC;
 
+--Tampilkan persentase jumlah reservasi di bulan November sampai Desember 2023 per customer yang memiliki nomor telepon berawalan 087. Urutkan desc dengan kolom yang ditampilkan id, no telepon, persentase jumlah reservasi
+SELECT M.M_ID_MEMBERSHIP, M.M_NO_TELP, COUNT(R.R_ID) * 100 / (SELECT COUNT(R_ID) FROM RESERVASI) AS "Persentase (%)"
+FROM MEMBERSHIP M, CUSTOMER C, TRANSAKSI T, RESERVASI R
+WHERE C.C_NRP = M.CUSTOMER_C_NRP AND
+    C.C_NRP = T.CUSTOMER_C_NRP AND
+    T.T_ID = R.TRANSAKSI_T_ID AND
+    EXTRACT (MONTH FROM T_TANGGAL_TRANSAKSI) BETWEEN 11 AND 12 AND
+    M.M_NO_TELP LIKE '087%'
+GROUP BY M.M_ID_MEMBERSHIP
+ORDER BY M.M_ID_MEMBERSHIP DESC;
+
+
+
 
 --query kukuh
 
