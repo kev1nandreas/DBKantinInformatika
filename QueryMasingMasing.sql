@@ -182,8 +182,7 @@ WHERE c.c_nrp IN (
 )
 ORDER BY c_nrp ASC;
 
---Menampilkan siapa saja yang membeli menu makanan dengan id menu 'C12',
-dan total yang ia beli selama berkunjung di kantin.
+--Menampilkan siapa saja yang membeli menu makanan dengan id menu 'C12', dan total yang ia beli selama berkunjung di kantin.
 
 SELECT c.c_nama AS "Nama Pelanggan", COUNT(t.t_id) AS total_orders
 FROM customer c
