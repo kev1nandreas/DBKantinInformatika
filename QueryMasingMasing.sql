@@ -194,14 +194,3 @@ FROM transaksi_menu tm
 WHERE tm.menu_mn_id = 'C12'
 )
 GROUP BY c.c_nama;
-
-
-
-
-
-
-
-
-
-
-
