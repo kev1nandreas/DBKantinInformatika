@@ -209,3 +209,30 @@ FROM transaksi_menu tm
 WHERE tm.menu_mn_id = 'C12'
 )
 GROUP BY c.c_nama;
+
+--buatkan sql presentase jumlah karyawan laki laki yang melayani transaksi pembayaran dengan kartu per customer secara descending
+
+SELECT
+    k.k_jenis_kelamin,
+    c.c_nrp,
+    COUNT(*) AS total_transaksi,
+    (COUNT(*) * 100.0) / ( SELECT
+        COUNT(*) AS total_transaksikartu
+    FROM
+        transaksi t
+	JOIN karyawan k ON  k.k_nik = t.karyawan_k_nik
+    WHERE
+        t.t_metode_pembayaran LIKE '%Kartu%' AND k.k_jenis_kelamin = 'L')as kartu_percentage
+FROM
+    karyawan k
+JOIN
+    transaksi t ON k.k_nik = t.karyawan_k_nik
+JOIN
+    customer c ON t.customer_c_nrp = c.c_nrp
+WHERE
+    k.k_jenis_kelamin = 'L'
+    AND t.t_metode_pembayaran LIKE '%Kartu%'
+GROUP BY
+    k.k_jenis_kelamin, c.c_nrp
+ORDER BY
+    kartu_percentage DESC;
