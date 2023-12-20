@@ -41,7 +41,23 @@ WHERE c_nrp IN (
 GROUP BY c_nrp
 ORDER BY jumlah_transaksi DESC;
 
-
+--prosentase jumlah transasksi yang dilayani pegawai dengan usia kurang dari 30 tahun per membership surabaya atau jakarta
+SELECT m.m_id_membership, m.m_alamat,
+COUNT(*) * 100.0 / (
+	SELECT COUNT(t.t_id)
+	FROM membership m
+	JOIN customer c ON m.customer_c_nrp = c.c_nrp
+	JOIN transaksi t ON c.c_nrp = t.customer_c_nrp
+	JOIN karyawan k ON t.karyawan_k_nik = k.k_nik
+	WHERE m.m_alamat IN ('Surabaya', 'Jakarta') AND k.k_umur < 30
+)AS prosentase
+FROM membership m
+JOIN customer c ON m.customer_c_nrp = c.c_nrp
+JOIN transaksi t ON c.c_nrp = t.customer_c_nrp
+JOIN karyawan k ON t.karyawan_k_nik = k.k_nik
+WHERE m.m_alamat IN ('Surabaya', 'Jakarta') AND k.k_umur < 30
+GROUP BY m.m_id_membership
+ORDER BY prosentase DESC;
 
 
 --query hamas
