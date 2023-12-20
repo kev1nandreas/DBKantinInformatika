@@ -97,6 +97,22 @@ WHERE C.C_NRP NOT IN (
 GROUP BY C.C_NRP, C.C_NAMA
 ORDER BY TOTAL_TRANSAKSI DESC;
 
+--Prosentase jumlah menu minuman per metode pembayaran dari custoer yang mememiliki nrp awal 502527 desc prosentase menampilkan metode pembayaran, prosentase menu minuman
+SELECT T.T_METODE_PEMBAYARAN,
+    COUNT(*) * 100.0 / (
+        SELECT COUNT(*)
+        FROM TRANSAKSI T
+        JOIN TRANSAKSI_MENU TM ON T.T_ID = TM.TRANSAKSI_T_ID
+        JOIN MENU M ON TM.MENU_MN_ID = M.MN_ID
+        WHERE M.MN_JENIS = 'Minuman' AND T.CUSTOMER_C_NRP LIKE '502527%'
+    ) AS PERSENTASE
+FROM TRANSAKSI T
+JOIN TRANSAKSI_MENU TM ON T.T_ID = TM.TRANSAKSI_T_ID
+JOIN MENU M ON TM.MENU_MN_ID = M.MN_ID
+WHERE M.MN_JENIS = 'Minuman' AND T.CUSTOMER_C_NRP LIKE '502527%'
+GROUP BY T.T_METODE_PEMBAYARAN
+ORDER BY PERSENTASE DESC;
+
 
 
 
